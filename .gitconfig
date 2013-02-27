@@ -1,0 +1,16 @@
+[color]
+	ui = true
+[user]
+	name = Mark Malone
+	email = mark.malone@orbitz.com
+[core]
+	editor = "/usr/bin/vim -u ~/.vimrc"
+[rerere]
+	enabled = true
+[alias]
+	hist = log --oneline --graph --decorate
+    changelog = log --all --graph --abbrev-commit --date=short --pretty=graph --decorate=full
+[pretty]
+    graph = format:"%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cd) %C(bold blue)<%aN>%Creset"
+[diff]
+	tool = kdiff3
