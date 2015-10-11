@@ -8,7 +8,8 @@
 [rerere]
     enabled = true
 [alias]
-    hist = log --oneline --graph --decorate
+     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    oldhist = log --oneline --graph --decorate
     changelog = log --all --graph --abbrev-commit --date=short --pretty=graph --decorate=full
     rst = "!git reset --hard origin/\"$(git rev-parse --abbrev-ref HEAD)\""
 [pretty]
