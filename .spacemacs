@@ -2,6 +2,8 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(setq system-uses-terminfo nil)
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -17,31 +19,36 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
      ;; better-defaults
+     auto-completion
+     (clojure :variables
+              clojure-enable-fancify-symbols t)
+     colors
+     elixir
      emacs-lisp
+     erlang
      git
      markdown
-     themes-megapack
      org
      osx
-     (shell :variables
-             shell-default-term-shell "/bin/bash"
-             shell-default-height 30
-             shell-default-position 'bottom)
-     syntax-checking
-     version-control
-     erlang
-     elixir
-     colors
-     editorconfig
      perspectives
+     python
+     (shell :variables
+            shell-default-term-shell "/bin/zsh"
+            shell-default-height 30
+            shell-default-position 'bottom)
+     syntax-checking
+     themes-megapack
+     version-control
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      groovy-mode
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -86,8 +93,9 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   ;; "Source Code Pro"
+   dotspacemacs-default-font '("Meslo LG S DZ Regular for Powerline"
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -170,6 +178,7 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (add-hook 'alchemist-mode-hook 'company-mode)
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
