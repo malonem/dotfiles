@@ -23,11 +23,15 @@
      auto-completion
      (clojure :variables
               clojure-enable-fancify-symbols t)
-     colors
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
      elixir
      emacs-lisp
      erlang
      git
+     github
+     go
+     html
      markdown
      org
      osx
@@ -37,6 +41,7 @@
             shell-default-term-shell "/bin/zsh"
             shell-default-height 30
             shell-default-position 'bottom)
+     shell-scripts
      syntax-checking
      themes-megapack
      version-control
@@ -74,14 +79,15 @@ before layers configuration."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed.
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'doge
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-lists '(recents bookmarks projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(molokai
+   dotspacemacs-themes '(subatomic
+                         molokai
                          spacemacs-dark
                          solarized-light
                          solarized-dark
@@ -181,6 +187,29 @@ layers configuration."
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 )
 
+(defun dotspacemacs/user-config ()
+
+  ;; Settings
+  (setq-default
+   auto-mode-alist
+   (append '(("\\.gradle\\'" . groovy-mode))
+           auto-mode-alist))
+
+  (let ((comint-hooks '(eshell-mode-hook
+                        term-mode-hook
+                        erc-mode-hook
+                        messages-buffer-mode-hook
+                        inferior-emacs-lisp-mode-hook
+                        inferior-python-mode-hook)))
+    (spacemacs/add-to-hooks (defun bb/no-hl-line-mode ()
+                              (setq-local global-hl-line-mode nil))
+                            comint-hooks)
+    (spacemacs/add-to-hooks (defun bb/no-scroll-margin ()
+                              (setq-local scroll-margin 0))
+                            comint-hooks))
+
+)
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -199,4 +228,5 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Meslo LG S DZ for Powerline" :foundry "nil" :slant normal :weight normal :height 100 :width normal))))
  )
