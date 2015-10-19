@@ -100,11 +100,11 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    ;; "Source Code Pro"
-   dotspacemacs-default-font '("Meslo LG S DZ Regular for Powerline"
+   dotspacemacs-default-font '("Meslo LG S DZ for Powerline"
                                :size 10
-                               :weight normal
+                               :weight light
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.5)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -228,5 +228,5 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Meslo LG S DZ for Powerline" :foundry "nil" :slant normal :weight normal :height 100 :width normal))))
+ '(default ((t (:foundry "nil" :slant normal :weight normal :width normal))))
  )
