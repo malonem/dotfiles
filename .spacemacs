@@ -38,7 +38,7 @@
      perspectives
      python
      (shell :variables
-            shell-default-term-shell "/bin/zsh"
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      shell-scripts
