@@ -32,6 +32,7 @@
      github
      go
      html
+     javascript
      markdown
      org
      osx
@@ -192,7 +193,8 @@ layers configuration."
   ;; Settings
   (setq-default
    auto-mode-alist
-   (append '(("\\.gradle\\'" . groovy-mode))
+   (append '(("\\.gradle\\'" . groovy-mode)
+             ("\\.coffee\\'" . javascript-mode))
            auto-mode-alist))
 
   (let ((comint-hooks '(eshell-mode-hook
